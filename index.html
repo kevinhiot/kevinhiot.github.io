@@ -466,7 +466,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 0;
       margin-top: 2rem;
-      border: 1px solid rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.15);
     }
     .stat-left {
       padding: 1rem 1.25rem;
@@ -474,11 +474,11 @@
       margin: -1px 0 0 -1px;
       background: rgba(255,255,255,0.25);
     }
-    .stat-left.amber {
+    .stat-left.black {
       background: var(--black);
     }
-    .stat-left.amber .stat-num { color: var(--amber); }
-    .stat-left.amber .stat-label { color: rgba(255,255,255,0.4); }
+    .stat-left.black .stat-num { color: var(--amber); }
+    .stat-left.black .stat-label { color: rgba(255,255,255,0.4); }
     .stat-left .stat-num {
       font-family: 'Syne', sans-serif;
       font-size: 1.8rem;
@@ -510,7 +510,25 @@
         <p class="hero-eyebrow" data-fr="Journaliste · Attaché de presse · Chef de produit" data-en="Journalist · Press Officer · Product Manager">Journaliste · Attaché de presse · Chef de produit</p>
         <h1 class="hero-name">Kevin<br><em>Hiot</em></h1>
         <p class="hero-desc" data-fr="Un profil à la croisée du récit, de la stratégie et du produit tech." data-en="At the crossroads of storytelling, strategy, and tech product.">Un profil à la croisée du récit, de la stratégie et du produit tech.</p>
-        <a href="/cdn-cgi/l/email-protection#7c17190a151252141513083c1b111d1510521f1311" class="hero-cta" data-fr="Me contacter →" data-en="Get in touch →">Me contacter →</a>
+        <a href="mailto:kevin.hiot@gmail.com" class="hero-cta" data-fr="Me contacter →" data-en="Get in touch →">Me contacter →</a>
+        <div class="hero-stats">
+          <div class="stat-left black">
+            <div class="stat-num">7+</div>
+            <div class="stat-label" data-fr="Années d'exp." data-en="Years of exp.">Années d'exp.</div>
+          </div>
+          <div class="stat-left">
+            <div class="stat-num">3</div>
+            <div class="stat-label" data-fr="Entreprises" data-en="Companies">Entreprises</div>
+          </div>
+          <div class="stat-left">
+            <div class="stat-num" style="font-size:0.95rem;line-height:1.5;">FR · EN<br>ES · IT</div>
+            <div class="stat-label" data-fr="Langues" data-en="Languages">Langues</div>
+          </div>
+          <div class="stat-left">
+            <div class="stat-num">Paris</div>
+            <div class="stat-label" data-fr="Localisation" data-en="Location">Localisation</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -523,7 +541,7 @@
       <div class="hero-contact">
         <div class="contact-row">
           <span class="contact-key">Email</span>
-          <span class="contact-val"><a href="/cdn-cgi/l/email-protection#1b707e6d7275357372746f5b7c767a727735787476"><span class="__cf_email__" data-cfemail="bbd0decdd2d595d3d2d4cffbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a></span>
+          <span class="contact-val"><a href="mailto:kevin.hiot@gmail.com">kevin.hiot@gmail.com</a></span>
         </div>
         <div class="contact-row">
           <span class="contact-key">LinkedIn</span>
@@ -764,6 +782,6 @@
     <div class="footer-copy" data-fr="© 2025 — Tous droits réservés" data-en="© 2025 — All rights reserved">© 2025 — Tous droits réservés</div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     function setLang(lang, btn) {
       document.qu
