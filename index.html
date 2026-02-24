@@ -4,224 +4,534 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kevin Hiot — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --cream: #F7F4EF;
-      --ink: #1A1612;
-      --accent: #C8532A;
-      --accent2: #3B6FA0;
-      --muted: #8A857E;
-      --border: #DDD8D0;
+      --black:   #0D0D0D;
+      --white:   #FEFEFE;
+      --amber:   #F5A623;
+      --amber-d: #C47D0A;
+      --amber-l: #FDF6E8;
+      --amber-m: #F5A62322;
+      --muted:   #888;
+      --border:  #E8E4DC;
+      --ink:     #1A1A1A;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; }
 
-    .lang-toggle { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; display: flex; border: 1px solid var(--ink); border-radius: 2px; overflow: hidden; }
-    .lang-toggle button { background: transparent; border: none; padding: 0.35rem 0.75rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; cursor: pointer; color: var(--ink); transition: background 0.2s, color 0.2s; }
-    .lang-toggle button.active { background: var(--ink); color: var(--cream); }
+    html { scroll-behavior: smooth; }
 
-    header { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); overflow: hidden; }
-    .hero-text { padding: 6rem 3rem 4rem 4rem; display: flex; flex-direction: column; justify-content: flex-end; }
-    .eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-    h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; margin-bottom: 1rem; font-weight: 400; }
-    h1 em { font-style: italic; color: var(--accent); }
-    .hero-subtitle { font-size: 1rem; color: var(--muted); max-width: 340px; margin-bottom: 3rem; font-weight: 300; }
-    .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 0.25rem; transition: color 0.2s, border-color 0.2s; }
-    .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
-
-    .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem 3rem; position: relative; overflow: hidden; }
-    .hero-right::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: var(--accent); opacity: 0.15; }
-    .hero-right::after { content: ''; position: absolute; bottom: 60px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: var(--accent2); opacity: 0.2; }
-    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; position: relative; z-index: 1; }
-    .stat { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1rem; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; line-height: 1; }
-    .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; letter-spacing: 0.05em; }
-
-    section { padding: 6rem 4rem; border-bottom: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
-    .section-num { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--accent); font-weight: 500; }
-    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; }
-
-    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 6rem; align-items: start; }
-    .about-text p { font-size: 1.15rem; font-weight: 300; color: var(--ink); margin-bottom: 1.25rem; max-width: 580px; }
-    .about-text p strong { font-weight: 500; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-    .tag { border: 1px solid var(--border); padding: 0.35rem 0.9rem; font-size: 0.78rem; border-radius: 100px; color: var(--muted); letter-spacing: 0.04em; }
-    .contact-block { display: flex; flex-direction: column; gap: 1.5rem; }
-    .contact-item { border-top: 1px solid var(--border); padding-top: 1rem; }
-    .contact-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
-    .contact-value { font-size: 0.9rem; font-weight: 500; word-break: break-word; }
-    .contact-value a { color: var(--ink); text-decoration: none; }
-    .contact-value a:hover { color: var(--accent); }
-
-    .exp-list { display: flex; flex-direction: column; }
-    .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 3rem; padding: 2.5rem 0; border-top: 1px solid var(--border); }
-    .exp-item:last-child { border-bottom: 1px solid var(--border); }
-    .exp-meta { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-    .exp-date { font-weight: 500; margin-bottom: 0.25rem; }
-    .exp-company { font-style: italic; }
-    .exp-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.75rem; }
-    .exp-desc { font-size: 0.9rem; color: var(--muted); font-weight: 300; max-width: 540px; }
-    .exp-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-    .exp-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.6rem; border-radius: 2px; }
-
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .skill-card { background: #fff; border: 1px solid var(--border); padding: 2rem; }
-    .skill-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1.25rem; font-weight: 400; }
-    .skill-list { list-style: none; }
-    .skill-list li { font-size: 0.85rem; color: var(--muted); padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
-    .skill-list li:last-child { border-bottom: none; }
-
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .edu-card { border: 1px solid var(--border); padding: 2rem; position: relative; overflow: hidden; }
-    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent2); }
-    .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 400; }
-    .edu-school { color: var(--muted); font-size: 0.85rem; }
-    .edu-year { color: var(--accent); font-size: 0.75rem; font-weight: 500; margin-top: 0.5rem; letter-spacing: 0.1em; }
-
-    footer { padding: 4rem; display: flex; justify-content: space-between; align-items: center; }
-    .footer-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; }
-    .footer-copy { font-size: 0.78rem; color: var(--muted); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    header, section { animation: fadeUp 0.7s ease both; }
-
-    @media (max-width: 768px) {
-      header { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text { padding: 6rem 1.5rem 3rem; }
-      .hero-right { padding: 3rem 1.5rem; }
-      section { padding: 4rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .edu-grid { grid-template-columns: 1fr; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
     }
 
-    /* REALISATIONS */
-    .real-category { margin-bottom: 3.5rem; }
-    .real-category:last-child { margin-bottom: 0; }
-    .real-category-title {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      display: flex;
+      border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .lang-toggle button {
+      background: transparent;
+      border: none;
+      padding: 0.35rem 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      color: rgba(0,0,0,0.5);
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-toggle button.active {
+      background: var(--amber);
+      color: var(--black);
+    }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      background: var(--amber);
+      padding: 5rem 3rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: var(--black);
+      opacity: 0.07;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
+      color: rgba(0,0,0,0.55);
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 0.95;
+      margin-top: 1.5rem;
+    }
+    .hero-name em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.7);
+      max-width: 320px;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-top: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.4rem;
+      border-radius: 2px;
+      margin-top: 2.5rem;
+      width: fit-content;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .hero-right {
+      background: var(--white);
+      padding: 5rem 3.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 1px solid var(--border);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .stat {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      margin: -1px 0 0 -1px;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem;
       color: var(--muted);
-      margin-bottom: 1.25rem;
+      margin-top: 0.3rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .stat.amber { background: var(--black); }
+    .stat.amber .stat-num { color: var(--white); }
+    .stat.amber .stat-label { color: rgba(255,255,255,0.5); }
+
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
     }
-    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .real-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      background: #fff;
-      text-decoration: none;
-      color: var(--ink);
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
+    .contact-row:last-child { border-bottom: none; }
+    .contact-key {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
-    .real-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .real-tag-top { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); font-weight: 500; }
-    .real-title { font-size: 0.9rem; font-weight: 400; line-height: 1.45; flex: 1; }
-    .real-arrow { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; margin-top: auto; }
-    .real-card:hover .real-arrow { color: var(--accent); }
-    .real-card--video { background: var(--ink); border-color: var(--ink); }
-    .real-card--video .real-tag-top { color: rgba(255,255,255,0.5); }
-    .real-card--video .real-title { color: #fff; }
-    .real-card--video .real-arrow { color: rgba(255,255,255,0.4); }
-    .real-card--video:hover { border-color: var(--accent); }
-    .real-card--video:hover .real-arrow { color: var(--accent); }
-    .real-video-icon { font-size: 1.5rem; color: var(--accent); }
-    @media (max-width: 768px) { .real-grid { grid-template-columns: 1fr; } }
+    .contact-val {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: right;
+    }
+    .contact-val a { color: var(--ink); text-decoration: none; }
+    .contact-val a:hover { color: var(--amber-d); }
 
-    /* EMPLOYER BLOCKS */
-    .real-employer {
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
       margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--amber);
+      font-weight: 700;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+      max-width: 560px;
+      line-height: 1.8;
+    }
+    .about-text p strong { font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+    .tag {
+      background: var(--amber-l);
+      color: var(--amber-d);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      border-radius: 100px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: 1px solid var(--border); }
+    .exp-meta { color: var(--muted); font-size: 0.8rem; line-height: 1.6; }
+    .exp-date { font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; font-family: 'Syne', sans-serif; font-size: 0.78rem; }
+    .exp-company { font-style: italic; color: var(--muted); }
+    .exp-content {}
+    .exp-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .exp-desc { font-size: 0.88rem; color: var(--muted); font-weight: 300; max-width: 520px; line-height: 1.7; }
+    .exp-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.85rem; }
+    .exp-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber-d);
+      background: var(--amber-l);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ── REALISATIONS ── */
+    .real-employer {
+      margin-bottom: 3.5rem;
       border: 1px solid var(--border);
-      padding: 2.5rem;
     }
     .real-employer:last-child { margin-bottom: 0; }
     .real-employer-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      background: var(--black);
+      color: var(--white);
     }
     .real-employer-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
     .real-employer-dates {
-      font-size: 0.78rem;
-      color: var(--muted);
+      font-size: 0.72rem;
+      color: var(--amber);
       letter-spacing: 0.05em;
     }
+    .real-employer-body { padding: 2rem; }
+    .real-category { margin-bottom: 2rem; }
+    .real-category:last-child { margin-bottom: 0; }
+    .real-category-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .real-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+    .real-card:hover { border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(245,166,35,0.12); }
+    .real-tag-top { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-d); font-weight: 600; }
+    .real-title { font-size: 0.85rem; line-height: 1.45; flex: 1; font-weight: 400; }
+    .real-arrow { font-size: 0.8rem; color: var(--muted); margin-top: auto; transition: color 0.2s, transform 0.2s; }
+    .real-card:hover .real-arrow { color: var(--amber-d); transform: translateX(3px); }
+    .real-card--video { background: var(--black); border-color: #222; }
+    .real-card--video .real-tag-top { color: var(--amber); }
+    .real-card--video .real-title { color: var(--white); }
+    .real-card--video .real-arrow { color: #444; }
+    .real-card--video:hover { border-color: var(--amber); }
+    .real-card--video:hover .real-arrow { color: var(--amber); }
+    .real-video-icon { font-size: 1.2rem; color: var(--amber); }
     .real-employer-footer {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
+      padding: 1rem 2rem;
       border-top: 1px solid var(--border);
       text-align: right;
     }
     .real-see-all {
-      font-size: 0.78rem;
-      font-weight: 500;
+      font-size: 0.72rem;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--amber-d);
       text-decoration: none;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--amber-d);
+      padding-bottom: 0.15rem;
       transition: opacity 0.2s;
     }
     .real-see-all:hover { opacity: 0.7; }
     .real-placeholder {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
       font-style: italic;
-      padding: 1rem 0;
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .skill-card { border: 1px solid var(--border); padding: 1.75rem; }
+    .skill-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .skill-list { list-style: none; }
+    .skill-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skill-list li::before { content: '—'; color: var(--amber); font-size: 0.7rem; }
+    .skill-list li:last-child { border-bottom: none; }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .edu-card {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--amber);
+    }
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .edu-school { color: var(--muted); font-size: 0.85rem; }
+    .edu-year {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--amber);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 4rem;
+      background: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .footer-name span { color: var(--amber); }
+    .footer-copy { font-size: 0.72rem; color: #444; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * { animation: fadeUp 0.6s ease both; }
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+    section { animation: fadeUp 0.5s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; }
+      .hero-left { min-height: 60vh; padding: 5rem 1.5rem 3rem; }
+      .hero-right { padding: 3rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .real-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <!-- LANG TOGGLE -->
   <div class="lang-toggle">
     <button class="active" onclick="setLang('fr', this)">FR</button>
     <button onclick="setLang('en', this)">EN</button>
   </div>
 
+  <!-- HERO -->
   <header>
-    <div class="hero-text">
-      <p class="eyebrow" data-fr="Journaliste · Attaché de presse · Chef de produit" data-en="Journalist · Press Officer · Product Manager">Journaliste · Attaché de presse · Chef de produit</p>
-      <h1>Kevin<br><em>Hiot</em></h1>
-      <p class="hero-subtitle" data-fr="Un profil à la croisée du récit, de la stratégie et du produit." data-en="At the crossroads of storytelling, strategy, and product.">Un profil à la croisée du récit, de la stratégie et du produit.</p>
-      <a href="mailto:kevin.hiot@gmail.com" class="hero-cta" data-fr="Me contacter →" data-en="Get in touch →">Me contacter →</a>
+    <div class="hero-left">
+      <div>
+        <p class="hero-eyebrow" data-fr="Journaliste · Attaché de presse · Chef de produit" data-en="Journalist · Press Officer · Product Manager">Journaliste · Attaché de presse · Chef de produit</p>
+        <h1 class="hero-name">Kevin<br><em>Hiot</em></h1>
+        <p class="hero-desc" data-fr="Un profil à la croisée du récit, de la stratégie et du produit tech." data-en="At the crossroads of storytelling, strategy, and tech product.">Un profil à la croisée du récit, de la stratégie et du produit tech.</p>
+        <a href="/cdn-cgi/l/email-protection#7c17190a151252141513083c1b111d1510521f1311" class="hero-cta" data-fr="Me contacter →" data-en="Get in touch →">Me contacter →</a>
+      </div>
     </div>
+
     <div class="hero-right">
-      <div class="stat-grid">
-        <div class="stat">
+      <div class="hero-stats">
+        <div class="stat amber">
           <div class="stat-num">7+</div>
-          <div class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</div>
+          <div class="stat-label" data-fr="Années d'exp." data-en="Years of exp.">Années d'exp.</div>
         </div>
         <div class="stat">
           <div class="stat-num">3</div>
           <div class="stat-label" data-fr="Entreprises" data-en="Companies">Entreprises</div>
         </div>
         <div class="stat">
-          <div class="stat-num" style="font-size:1.1rem; line-height:1.6;">FR · EN<br>ES · IT</div>
+          <div class="stat-num" style="font-size:1.1rem; line-height:1.5;">FR · EN<br>ES · IT</div>
           <div class="stat-label" data-fr="Langues parlées" data-en="Languages">Langues parlées</div>
         </div>
+        <div class="stat">
+          <div class="stat-num">Paris</div>
+          <div class="stat-label" data-fr="Localisation" data-en="Location">Localisation</div>
+        </div>
+      </div>
 
+      <div class="hero-contact">
+        <div class="contact-row">
+          <span class="contact-key">Email</span>
+          <span class="contact-val"><a href="/cdn-cgi/l/email-protection#1b707e6d7275357372746f5b7c767a727735787476"><span class="__cf_email__" data-cfemail="bbd0decdd2d595d3d2d4cffbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">LinkedIn</span>
+          <span class="contact-val"><a href="https://www.linkedin.com/in/kevin-hiot-9a9b396a/" target="_blank">linkedin.com/in/kevin-hiot</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key" data-fr="Langues" data-en="Languages">Langues</span>
+          <span class="contact-val" data-fr="Français · Anglais · Espagnol · Italien" data-en="French · English · Spanish · Italian">Français · Anglais · Espagnol · Italien</span>
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- ABOUT -->
   <section id="about">
     <div class="section-header">
       <span class="section-num">01</span>
@@ -241,27 +551,10 @@
           <span class="tag">Production vidéo</span>
         </div>
       </div>
-      <div class="contact-block">
-        <div class="contact-item">
-          <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:kevin.hiot@gmail.com">kevin.hiot@gmail.com</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value"><a href="https://www.linkedin.com/in/kevin-hiot-9a9b396a/" target="_blank">linkedin.com/in/kevin-hiot</a></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label" data-fr="Localisation" data-en="Location">Localisation</div>
-          <div class="contact-value">Paris, France</div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label" data-fr="Langues" data-en="Languages">Langues</div>
-          <div class="contact-value" data-fr="Français · Anglais · Espagnol · Italien" data-en="French · English · Spanish · Italian">Français · Anglais · Espagnol · Italien</div>
-        </div>
-      </div>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-header">
       <span class="section-num">02</span>
@@ -274,7 +567,7 @@
           <div class="exp-date" data-fr="Mars 2024 — Oct. 2025" data-en="Mar. 2024 — Oct. 2025">Mars 2024 — Oct. 2025</div>
           <div class="exp-company">Huawei</div>
         </div>
-        <div>
+        <div class="exp-content">
           <div class="exp-title" data-fr="Attaché de presse & Chef de produit" data-en="Press Officer & Product Manager">Attaché de presse & Chef de produit</div>
           <div class="exp-desc" data-fr="Gestion des relations médias, rédaction de communiqués et dossiers de presse, coordination des prises de parole et pilotage du cycle de vie produit en lien avec les équipes marketing et techniques." data-en="Media relations management, writing press releases and press kits, coordinating public statements, and overseeing the product lifecycle in collaboration with marketing and technical teams.">Gestion des relations médias, rédaction de communiqués et dossiers de presse, coordination des prises de parole et pilotage du cycle de vie produit en lien avec les équipes marketing et techniques.</div>
           <div class="exp-tags">
@@ -289,7 +582,7 @@
           <div class="exp-date">2019 — 2023</div>
           <div class="exp-company">Les Numériques</div>
         </div>
-        <div>
+        <div class="exp-content">
           <div class="exp-title" data-fr="Journaliste" data-en="Journalist">Journaliste</div>
           <div class="exp-desc" data-fr="Production d'articles, tests produits, interviews et reportages sur l'actualité tech et numérique. Développement d'une expertise pointue sur les produits high-tech grand public." data-en="Writing articles, product reviews, interviews and reports on tech and digital news. Developed in-depth expertise in consumer electronics.">Production d'articles, tests produits, interviews et reportages sur l'actualité tech et numérique. Développement d'une expertise pointue sur les produits high-tech grand public.</div>
           <div class="exp-tags">
@@ -304,7 +597,7 @@
           <div class="exp-date" data-fr="Sept. 2017 — Janv. 2019" data-en="Sep. 2017 — Jan. 2019">Sept. 2017 — Janv. 2019</div>
           <div class="exp-company">Fnac</div>
         </div>
-        <div>
+        <div class="exp-content">
           <div class="exp-title" data-fr="Rédacteur spécialisé high-tech & jeux vidéo" data-en="Specialist Writer — Tech & Video Games">Rédacteur spécialisé high-tech & jeux vidéo</div>
           <div class="exp-desc" data-fr="Rédaction de contenus éditoriaux spécialisés sur les produits high-tech et l'univers du jeu vidéo, et réalisation de contenus vidéo pour les plateformes de la marque." data-en="Writing specialist editorial content on consumer electronics and video games, as well as producing video content for the brand's platforms.">Rédaction de contenus éditoriaux spécialisés sur les produits high-tech et l'univers du jeu vidéo, et réalisation de contenus vidéo pour les plateformes de la marque.</div>
           <div class="exp-tags">
@@ -317,90 +610,92 @@
     </div>
   </section>
 
+  <!-- REALISATIONS -->
   <section id="realisations">
     <div class="section-header">
       <span class="section-num">03</span>
       <h2 data-fr="Réalisations" data-en="Work">Réalisations</h2>
     </div>
 
-    <!-- BLOC LES NUMERIQUES -->
     <div class="real-employer">
       <div class="real-employer-header">
         <div class="real-employer-name">Les Numériques</div>
         <div class="real-employer-dates" data-fr="Journaliste · 2019 — 2023" data-en="Journalist · 2019 — 2023">Journaliste · 2019 — 2023</div>
       </div>
+      <div class="real-employer-body">
+        <div class="real-category">
+          <div class="real-category-title" data-fr="Tests produits" data-en="Product reviews">Tests produits</div>
+          <div class="real-grid">
+            <a href="https://www.lesnumeriques.com/telephone-portable/apple-iphone-14-pro-max-p68765/test.html" target="_blank" class="real-card">
+              <div class="real-tag-top">Test</div>
+              <div class="real-title">Apple iPhone 14 Pro Max : la gamme Pro sur une toute nouvelle dynamique</div>
+              <div class="real-arrow">→</div>
+            </a>
+            <a href="https://www.lesnumeriques.com/telephone-portable/google-pixel-7a-p71639.html" target="_blank" class="real-card">
+              <div class="real-tag-top">Test</div>
+              <div class="real-title">Google Pixel 7a : le meilleur ambassadeur du milieu de gamme</div>
+              <div class="real-arrow">→</div>
+            </a>
+          </div>
+        </div>
 
-      <div class="real-category">
-        <div class="real-category-title" data-fr="Tests produits" data-en="Product reviews">Tests produits</div>
-        <div class="real-grid">
-          <a href="https://www.lesnumeriques.com/telephone-portable/apple-iphone-14-pro-max-p68765/test.html" target="_blank" class="real-card">
-            <div class="real-tag-top">Test</div>
-            <div class="real-title">Apple iPhone 14 Pro Max : la gamme Pro sur une toute nouvelle dynamique</div>
-            <div class="real-arrow">→</div>
-          </a>
-          <a href="https://www.lesnumeriques.com/telephone-portable/google-pixel-7a-p71639.html" target="_blank" class="real-card">
-            <div class="real-tag-top">Test</div>
-            <div class="real-title">Google Pixel 7a : le meilleur ambassadeur du milieu de gamme</div>
-            <div class="real-arrow">→</div>
-          </a>
+        <div class="real-category">
+          <div class="real-category-title" data-fr="Dossiers & décryptages" data-en="Features & explainers">Dossiers & décryptages</div>
+          <div class="real-grid">
+            <a href="https://www.lesnumeriques.com/telephone-portable/on-a-teste-le-mix-fold-2-le-smartphone-pliant-a-la-sauce-xiaomi-a200637.html" target="_blank" class="real-card">
+              <div class="real-tag-top">Dossier</div>
+              <div class="real-title">On a testé le Mix Fold 2, le smartphone pliant à la sauce Xiaomi</div>
+              <div class="real-arrow">→</div>
+            </a>
+            <a href="https://www.lesnumeriques.com/telephone-portable/esim-decryptage-de-la-remplacante-de-votre-carte-sim-traditionnelle-a191647.html" target="_blank" class="real-card">
+              <div class="real-tag-top">Dossier</div>
+              <div class="real-title">eSIM : décryptage de la remplaçante de votre carte SIM traditionnelle</div>
+              <div class="real-arrow">→</div>
+            </a>
+            <a href="https://www.lesnumeriques.com/telephone-portable/tout-savoir-sur-e-os-v1-l-interface-mobile-de-murena-e-foundation-a184011.html" target="_blank" class="real-card">
+              <div class="real-tag-top">Dossier</div>
+              <div class="real-title">Tout savoir sur /e/OS V1, l'interface mobile de Murena (/e/ Foundation)</div>
+              <div class="real-arrow">→</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="real-category">
+          <div class="real-category-title" data-fr="Vidéos" data-en="Videos">Vidéos</div>
+          <div class="real-grid">
+            <a href="https://www.youtube.com/watch?v=PJ7qsF6LFSU" target="_blank" class="real-card real-card--video">
+              <div class="real-tag-top">YouTube</div>
+              <div class="real-video-icon">▶</div>
+              <div class="real-title">iPhone 14 Pro et Pro Max : la maturité avant les changements ?</div>
+              <div class="real-arrow">→</div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=_lQ0F7__pKA" target="_blank" class="real-card real-card--video">
+              <div class="real-tag-top">YouTube</div>
+              <div class="real-video-icon">▶</div>
+              <div class="real-title">Phone (1) de Nothing : pas besoin d'être un iPhone pour briller !</div>
+              <div class="real-arrow">→</div>
+            </a>
+          </div>
         </div>
       </div>
-
-      <div class="real-category">
-        <div class="real-category-title" data-fr="Dossiers & décryptages" data-en="Features & explainers">Dossiers & décryptages</div>
-        <div class="real-grid">
-          <a href="https://www.lesnumeriques.com/telephone-portable/on-a-teste-le-mix-fold-2-le-smartphone-pliant-a-la-sauce-xiaomi-a200637.html" target="_blank" class="real-card">
-            <div class="real-tag-top">Dossier</div>
-            <div class="real-title">On a testé le Mix Fold 2, le smartphone pliant à la sauce Xiaomi</div>
-            <div class="real-arrow">→</div>
-          </a>
-          <a href="https://www.lesnumeriques.com/telephone-portable/esim-decryptage-de-la-remplacante-de-votre-carte-sim-traditionnelle-a191647.html" target="_blank" class="real-card">
-            <div class="real-tag-top">Dossier</div>
-            <div class="real-title">eSIM : décryptage de la remplaçante de votre carte SIM traditionnelle</div>
-            <div class="real-arrow">→</div>
-          </a>
-          <a href="https://www.lesnumeriques.com/telephone-portable/tout-savoir-sur-e-os-v1-l-interface-mobile-de-murena-e-foundation-a184011.html" target="_blank" class="real-card">
-            <div class="real-tag-top">Dossier</div>
-            <div class="real-title">Tout savoir sur /e/OS V1, l'interface mobile de Murena (/e/ Foundation)</div>
-            <div class="real-arrow">→</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="real-category">
-        <div class="real-category-title" data-fr="Vidéos" data-en="Videos">Vidéos</div>
-        <div class="real-grid">
-          <a href="https://www.youtube.com/watch?v=PJ7qsF6LFSU" target="_blank" class="real-card real-card--video">
-            <div class="real-tag-top">YouTube</div>
-            <div class="real-video-icon">▶</div>
-            <div class="real-title">iPhone 14 Pro et Pro Max : la maturité avant les changements ?</div>
-            <div class="real-arrow">→</div>
-          </a>
-          <a href="https://www.youtube.com/watch?v=_lQ0F7__pKA" target="_blank" class="real-card real-card--video">
-            <div class="real-tag-top">YouTube</div>
-            <div class="real-video-icon">▶</div>
-            <div class="real-title">Phone (1) de Nothing : pas besoin d'être un iPhone pour briller !</div>
-            <div class="real-arrow">→</div>
-          </a>
-        </div>
-      </div>
-
       <div class="real-employer-footer">
         <a href="https://www.lesnumeriques.com/auteur/383/kevin-hiot" target="_blank" class="real-see-all" data-fr="Tous mes articles →" data-en="All my articles →">Tous mes articles →</a>
       </div>
     </div>
 
-    <!-- BLOC HUAWEI (à compléter) -->
     <div class="real-employer">
       <div class="real-employer-header">
         <div class="real-employer-name">Huawei</div>
         <div class="real-employer-dates" data-fr="Attaché de presse & Chef de produit · Mars 2024 — Oct. 2025" data-en="Press Officer & Product Manager · Mar. 2024 — Oct. 2025">Attaché de presse & Chef de produit · Mars 2024 — Oct. 2025</div>
       </div>
-      <div class="real-placeholder" data-fr="Réalisations à venir…" data-en="Coming soon…">Réalisations à venir…</div>
+      <div class="real-employer-body">
+        <div class="real-placeholder" data-fr="Réalisations à venir…" data-en="Coming soon…">Réalisations à venir…</div>
+      </div>
     </div>
 
   </section>
 
+  <!-- SKILLS -->
   <section id="skills">
     <div class="section-header">
       <span class="section-num">04</span>
@@ -437,6 +732,7 @@
     </div>
   </section>
 
+  <!-- EDUCATION -->
   <section id="education">
     <div class="section-header">
       <span class="section-num">05</span>
@@ -456,11 +752,12 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-name">Kevin Hiot</div>
+    <div class="footer-name">Kevin <span>Hiot</span></div>
     <div class="footer-copy" data-fr="© 2025 — Tous droits réservés" data-en="© 2025 — All rights reserved">© 2025 — Tous droits réservés</div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function setLang(lang, btn) {
       document.qu
