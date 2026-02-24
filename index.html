@@ -98,6 +98,95 @@
       .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
+
+    /* REALISATIONS */
+    .real-category { margin-bottom: 3.5rem; }
+    .real-category:last-child { margin-bottom: 0; }
+    .real-category-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .real-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .real-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .real-tag-top { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); font-weight: 500; }
+    .real-title { font-size: 0.9rem; font-weight: 400; line-height: 1.45; flex: 1; }
+    .real-arrow { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; margin-top: auto; }
+    .real-card:hover .real-arrow { color: var(--accent); }
+    .real-card--video { background: var(--ink); border-color: var(--ink); }
+    .real-card--video .real-tag-top { color: rgba(255,255,255,0.5); }
+    .real-card--video .real-title { color: #fff; }
+    .real-card--video .real-arrow { color: rgba(255,255,255,0.4); }
+    .real-card--video:hover { border-color: var(--accent); }
+    .real-card--video:hover .real-arrow { color: var(--accent); }
+    .real-video-icon { font-size: 1.5rem; color: var(--accent); }
+    @media (max-width: 768px) { .real-grid { grid-template-columns: 1fr; } }
+
+    /* EMPLOYER BLOCKS */
+    .real-employer {
+      margin-bottom: 4rem;
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+    .real-employer:last-child { margin-bottom: 0; }
+    .real-employer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .real-employer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    .real-employer-dates {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .real-employer-footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: right;
+    }
+    .real-see-all {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.2rem;
+      transition: opacity 0.2s;
+    }
+    .real-see-all:hover { opacity: 0.7; }
+    .real-placeholder {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      padding: 1rem 0;
+    }
   </style>
 </head>
 <body>
@@ -228,9 +317,93 @@
     </div>
   </section>
 
-  <section id="skills">
+  <section id="realisations">
     <div class="section-header">
       <span class="section-num">03</span>
+      <h2 data-fr="Réalisations" data-en="Work">Réalisations</h2>
+    </div>
+
+    <!-- BLOC LES NUMERIQUES -->
+    <div class="real-employer">
+      <div class="real-employer-header">
+        <div class="real-employer-name">Les Numériques</div>
+        <div class="real-employer-dates" data-fr="Journaliste · 2019 — 2023" data-en="Journalist · 2019 — 2023">Journaliste · 2019 — 2023</div>
+      </div>
+
+      <div class="real-category">
+        <div class="real-category-title" data-fr="Tests produits" data-en="Product reviews">Tests produits</div>
+        <div class="real-grid">
+          <a href="https://www.lesnumeriques.com/telephone-portable/apple-iphone-14-pro-max-p68765/test.html" target="_blank" class="real-card">
+            <div class="real-tag-top">Test</div>
+            <div class="real-title">Apple iPhone 14 Pro Max : la gamme Pro sur une toute nouvelle dynamique</div>
+            <div class="real-arrow">→</div>
+          </a>
+          <a href="https://www.lesnumeriques.com/telephone-portable/google-pixel-7a-p71639.html" target="_blank" class="real-card">
+            <div class="real-tag-top">Test</div>
+            <div class="real-title">Google Pixel 7a : le meilleur ambassadeur du milieu de gamme</div>
+            <div class="real-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="real-category">
+        <div class="real-category-title" data-fr="Dossiers & décryptages" data-en="Features & explainers">Dossiers & décryptages</div>
+        <div class="real-grid">
+          <a href="https://www.lesnumeriques.com/telephone-portable/on-a-teste-le-mix-fold-2-le-smartphone-pliant-a-la-sauce-xiaomi-a200637.html" target="_blank" class="real-card">
+            <div class="real-tag-top">Dossier</div>
+            <div class="real-title">On a testé le Mix Fold 2, le smartphone pliant à la sauce Xiaomi</div>
+            <div class="real-arrow">→</div>
+          </a>
+          <a href="https://www.lesnumeriques.com/telephone-portable/esim-decryptage-de-la-remplacante-de-votre-carte-sim-traditionnelle-a191647.html" target="_blank" class="real-card">
+            <div class="real-tag-top">Dossier</div>
+            <div class="real-title">eSIM : décryptage de la remplaçante de votre carte SIM traditionnelle</div>
+            <div class="real-arrow">→</div>
+          </a>
+          <a href="https://www.lesnumeriques.com/telephone-portable/tout-savoir-sur-e-os-v1-l-interface-mobile-de-murena-e-foundation-a184011.html" target="_blank" class="real-card">
+            <div class="real-tag-top">Dossier</div>
+            <div class="real-title">Tout savoir sur /e/OS V1, l'interface mobile de Murena (/e/ Foundation)</div>
+            <div class="real-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="real-category">
+        <div class="real-category-title" data-fr="Vidéos" data-en="Videos">Vidéos</div>
+        <div class="real-grid">
+          <a href="https://www.youtube.com/watch?v=PJ7qsF6LFSU" target="_blank" class="real-card real-card--video">
+            <div class="real-tag-top">YouTube</div>
+            <div class="real-video-icon">▶</div>
+            <div class="real-title">iPhone 14 Pro et Pro Max : la maturité avant les changements ?</div>
+            <div class="real-arrow">→</div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=_lQ0F7__pKA" target="_blank" class="real-card real-card--video">
+            <div class="real-tag-top">YouTube</div>
+            <div class="real-video-icon">▶</div>
+            <div class="real-title">Phone (1) de Nothing : pas besoin d'être un iPhone pour briller !</div>
+            <div class="real-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="real-employer-footer">
+        <a href="https://www.lesnumeriques.com/auteur/383/kevin-hiot" target="_blank" class="real-see-all" data-fr="Tous mes articles →" data-en="All my articles →">Tous mes articles →</a>
+      </div>
+    </div>
+
+    <!-- BLOC HUAWEI (à compléter) -->
+    <div class="real-employer">
+      <div class="real-employer-header">
+        <div class="real-employer-name">Huawei</div>
+        <div class="real-employer-dates" data-fr="Attaché de presse & Chef de produit · Mars 2024 — Oct. 2025" data-en="Press Officer & Product Manager · Mar. 2024 — Oct. 2025">Attaché de presse & Chef de produit · Mars 2024 — Oct. 2025</div>
+      </div>
+      <div class="real-placeholder" data-fr="Réalisations à venir…" data-en="Coming soon…">Réalisations à venir…</div>
+    </div>
+
+  </section>
+
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">04</span>
       <h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
     </div>
     <div class="skills-grid">
@@ -266,7 +439,7 @@
 
   <section id="education">
     <div class="section-header">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 data-fr="Formation" data-en="Education">Formation</h2>
     </div>
     <div class="edu-grid">
